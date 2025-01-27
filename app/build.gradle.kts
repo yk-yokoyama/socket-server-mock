@@ -36,7 +36,8 @@ android {
 }
 
 dependencies {
-
+    implementation(libs.ktor.network)
+    implementation(libs.ktor.network.tls)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

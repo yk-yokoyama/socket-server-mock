@@ -1,7 +1,6 @@
 package com.example.socketserver
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +12,7 @@ class MainActivity : AppCompatActivity() {
     private val startButton by lazy { findViewById<Button>(R.id.btn_start) }
     private val stopButton by lazy { findViewById<Button>(R.id.btn_stop) }
 
-    private val socketServer = SocketServer()
+    private var ktorServer = KtorServer()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,11 +25,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         startButton.setOnClickListener {
-            socketServer.startServer(8080)
+            ktorServer.open()
         }
         stopButton.setOnClickListener {
-            Log.d("MainActivity", "Stop button clicked")
-            socketServer.stopServer()
+            ktorServer.close()
         }
     }
 }
